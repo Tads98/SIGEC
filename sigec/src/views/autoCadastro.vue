@@ -1,6 +1,20 @@
 <template>
   <v-app>
     <v-main>
+      <div>
+          <h1>Sigec</h1>
+          <p color="white">Sistema de gestão de casos</p>
+          <v-btn
+                    class="rounded-pill"
+                    type="submit"
+                    color="indigo darken-4"
+                    x-large
+                    w-25
+                    block
+                    dark
+                    >Acessar Transparência</v-btn
+                  >
+      </div>
       <v-container style="margin-left: 60%">
         <v-row>
           <v-col lg="4">

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import dashboard from '../components/dashboard.vue'
-import login from '../components/login.vue'
-import autoCadastro from '../components/autoCadastro.vue'
+import dashboard from '../views/dashboard.vue'
+import login from '../views/login.vue'
+import autoCadastro from '../views/autoCadastro.vue'
 
 Vue.use(VueRouter)
 

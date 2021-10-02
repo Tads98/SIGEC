@@ -71,8 +71,8 @@
 import axios from "axios";
 
 export default {
-  name: 'Login',
-  data(){
+  name: "Login",
+  data() {
     return {
       email: "",
       senha: "",
@@ -85,15 +85,15 @@ export default {
       const formData = {
         email: this.email,
         senha: this.senha,
-      }
+      };
 
-      await axios.post("api/auth/login", formData)
-      .then((response) => {
-        
-        console.log(response)
-        // this.login = response.data.data;
-      })
-      .catch((error) => {
+      await axios
+        .post("auth/login", formData)
+        .then((response) => {
+          console.log(response);
+          // this.login = response.data.data;
+        })
+        .catch((error) => {
           if (error.response) {
             for (const property in error.response.data) {
               this.errors.push(`${property}: ${error.response.data[property]}`);
@@ -105,9 +105,9 @@ export default {
             console.log(JSON.stringify(error));
           }
         });
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>

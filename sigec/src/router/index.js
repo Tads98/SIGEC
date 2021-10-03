@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import dashboard from '../views/dashboard.vue'
 import login from '../views/login.vue'
 import autoCadastro from '../views/autoCadastro.vue'
+import adicionarVinculo from '../views/adicionarVinculo.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,12 @@ const routes = [
         path: '/autoCadastro',
         name: 'autoCadastro',
         component: autoCadastro
+    },
+
+    {
+        path: '/adicionarVinculo',
+        name: 'adicionarVinculo',
+        component: adicionarVinculo
     },
 ]
 

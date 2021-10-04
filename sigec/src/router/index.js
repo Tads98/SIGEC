@@ -4,6 +4,7 @@ import dashboard from '../views/dashboard.vue'
 import login from '../views/login.vue'
 import autoCadastro from '../views/autoCadastro.vue'
 import adicionarVinculo from '../views/adicionarVinculo.vue'
+import transparencia from '../views/transparencia.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,12 @@ const routes = [
         path: '/adicionarVinculo',
         name: 'adicionarVinculo',
         component: adicionarVinculo
+    },
+
+    {
+        path: '/transparencia',
+        name: 'transparencia',
+        component: transparencia
     },
 ]
 

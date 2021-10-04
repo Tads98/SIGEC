@@ -33,7 +33,7 @@
                   ></v-text-field>
                   <v-text-field
                     label="Senha"
-                    v-model="senha"
+                    v-model="password"
                     name="password"
                     prepend-inner-icon="mdi-lock"
                     type="password"
@@ -89,7 +89,7 @@ export default {
   data() {
     return {
       email: "",
-      senha: "",
+      password: "",
       errors: [],
     };
   },
@@ -98,11 +98,11 @@ export default {
     async submitForm() {
       const formData = {
         email: this.email,
-        senha: this.senha,
+        password: this.password,
       };
 
       await axios
-        .post("auth/login", formData)
+        .post("/auth/login", formData)
         .then((response) => {
           console.log(response);
           // this.login = response.data.data;

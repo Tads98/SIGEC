@@ -6,10 +6,24 @@
   >
     <v-card-title id="position">Adicionar um novo vínculo</v-card-title>
 
-    <v-form>
-        <v-text-field label="Cargo" name="cargo" type="text" class="rounded-pill" outlined></v-text-field>
-        <v-text-field label="Estabelecimento de Saúde" name="estabelecimento" type="text" class="rounded-pill" outlined></v-text-field>
-    </v-form>
+    <v-form @submit.prevent="addVinculo">
+        <v-text-field 
+          v-model="perfil"
+          label="Cargo" 
+          name="cargo" 
+          type="text" 
+          class="rounded-pill" 
+          outlined
+        >
+        </v-text-field>
+        <v-text-field 
+          label="Estabelecimento de Saúde" 
+          name="estabelecimento" 
+          type="text" 
+          class="rounded-pill" 
+          outlined
+        >
+        </v-text-field>
 
     <v-card-actions id="button-add">
       <v-btn
@@ -22,7 +36,7 @@
         Adicionar Vínculo
       </v-btn>
 
-      <v-btn
+      <!-- <v-btn
         type="submit" 
         class="rounded-pill mb-5 btn-lg" 
         color="red darken-1"
@@ -30,10 +44,48 @@
       >
       <v-icon> mdi-close-circle-outline</v-icon>
         Cancelar
-      </v-btn>
+      </v-btn> -->
     </v-card-actions>
+    </v-form>
   </v-card>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "adicionarVinculo",
+  data(){
+    return{
+      perfil: "",
+      estabelecimento: "", 
+    };
+  },
+
+  methods: {
+    addVinculo(){
+      axios({
+        method: "post",
+        url: "/vinculos",
+        data: {
+          perfil: this.perfil,
+          estabelecimento: this.estabelecimento,
+        },
+      })
+      .then((response) => {
+        this.perfil = "";
+        this.estabelecimento = "";
+
+        console.log(response);
+        this.$router.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    },
+  },
+};
+</script>
 
 <style scoped>
     #position, .v-form{

@@ -5,6 +5,7 @@ import login from '../views/login.vue'
 import autoCadastro from '../views/autoCadastro.vue'
 import adicionarVinculo from '../views/adicionarVinculo.vue'
 import transparencia from '../views/transparencia.vue'
+import buscaCasos from '../views/buscaCasos.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,12 @@ const routes = [
         path: '/transparencia',
         name: 'transparencia',
         component: transparencia
+    },
+
+    {
+        path: '/buscaCasos',
+        name: 'buscaCasos',
+        component: buscaCasos
     },
 ]
 

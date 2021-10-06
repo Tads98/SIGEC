@@ -1,71 +1,83 @@
 <template>
   <div class="sheet">
     <v-container class="mt-5">
-    <h1>Transparência</h1>
-        <v-row>
-            <v-col>
-                <v-row class="ma-0">
-                    <v-card width="100%" color="indigo darken-4" dark>
-                        <v-card-title class="justify-end"
-                            ><v-icon>mdi-clipboard-text</v-icon
-                            >{{ indicadores.tratados }}</v-card-title
-                        >
-                        <v-card-text class="text-right"
-                            ><p>Casos tratados</p></v-card-text
-                        >
-                    </v-card>
-                </v-row>
-                <v-row class="ma-0 mt-2">
-                    <v-card width="100%" style="border: 1px solid blue">
-                    <v-card-title class="blue--text justify-end"
-                        ><v-icon color="blue darken-2">mdi-clipboard-text</v-icon
-                        >{{ indicadores.suspeitos }}</v-card-title
-                    >
-                    <v-card-text class="blue--text text-end"
-                        ><p>Casos suspeitos</p></v-card-text
-                    >
-                    </v-card>
-                </v-row>
-            </v-col>
-            <v-col>
-                <v-row class="ma-0">
-                    <v-card width="100%" style="border: 1px solid green">
-                        <v-card-title class="green--text justify-end"
-                            ><v-icon color="green darken-2" id="teste"
-                            >mdi-clipboard-text</v-icon
-                            >{{ indicadores.descartados }}</v-card-title
-                        >
-                        <v-card-text class="green--text text-end"
-                            ><p>Casos descartados</p></v-card-text
-                        >
-                    </v-card>
-                </v-row>
-                <v-row class="ma-0 mt-2">
-                    <v-card width="100%" style="border: 1px solid blue">
-                        <v-card-title class="blue--text justify-end"
-                            ><v-icon color="blue darken-2">mdi-clipboard-text</v-icon
-                            >{{ indicadores.perdidos }}</v-card-title
-                        >
-                        <v-card-text class="blue--text text-end"
-                            ><p>Casos perdidos</p></v-card-text
-                        >
-                    </v-card>
-                </v-row>
-            </v-col>
-            <v-col>
-                <v-card
-                        style="border: 1px solid #006699;"
-                    >
-                    
-                        <v-card-title class="blue--text justify-end">{{ sum }}</v-card-title>
-                        <v-card-text class="blue--text text-end"><p>Casos de covid</p></v-card-text>
-                        <v-card-text class="blue--text text-left"><p>jovens(0-19 anos) {{ indicadores.estratificacao.jovens }}</p></v-card-text>
-                        <v-card-text class="blue--text text-left"><p>Adultos(20 - 59 anos) {{ indicadores.estratificacao.adultos }}</p></v-card-text>
-                        <v-card-text class="blue--text text-left"><p>Idosos(acima de 60 anos) {{ indicadores.estratificacao.idosos }}</p></v-card-text>
-                
-                    </v-card>
-            </v-col>
-        </v-row>
+      <h1>Transparência</h1>
+      <v-row>
+        <v-col>
+          <v-row class="ma-0">
+            <v-card width="100%" color="indigo darken-4" dark>
+              <v-card-title class="justify-end"
+                ><v-icon>mdi-clipboard-text</v-icon
+                >{{ indicadores.tratados }}</v-card-title
+              >
+              <v-card-text class="text-right"
+                ><p>Casos tratados</p></v-card-text
+              >
+            </v-card>
+          </v-row>
+          <v-row class="ma-0 mt-2">
+            <v-card width="100%" style="border: 1px solid blue">
+              <v-card-title class="blue--text justify-end"
+                ><v-icon color="blue darken-2">mdi-clipboard-text</v-icon
+                >{{ indicadores.suspeitos }}</v-card-title
+              >
+              <v-card-text class="blue--text text-end"
+                ><p>Casos suspeitos</p></v-card-text
+              >
+            </v-card>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-row class="ma-0">
+            <v-card width="100%" style="border: 1px solid green">
+              <v-card-title class="green--text justify-end"
+                ><v-icon color="green darken-2" id="teste"
+                  >mdi-clipboard-text</v-icon
+                >{{ indicadores.descartados }}</v-card-title
+              >
+              <v-card-text class="green--text text-end"
+                ><p>Casos descartados</p></v-card-text
+              >
+            </v-card>
+          </v-row>
+          <v-row class="ma-0 mt-2">
+            <v-card width="100%" style="border: 1px solid blue">
+              <v-card-title class="blue--text justify-end"
+                ><v-icon color="blue darken-2">mdi-clipboard-text</v-icon
+                >{{ indicadores.perdidos }}</v-card-title
+              >
+              <v-card-text class="blue--text text-end"
+                ><p>Casos perdidos</p></v-card-text
+              >
+            </v-card>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-card style="border: 1px solid #006699">
+            <v-card-title class="blue--text justify-end">{{
+              sum
+            }}</v-card-title>
+            <v-card-text class="blue--text text-end"
+              ><p>Casos de covid</p></v-card-text
+            >
+            <v-card-text class="blue--text text-left"
+              ><p>
+                jovens(0-19 anos) {{ indicadores.estratificacao.jovens }}
+              </p></v-card-text
+            >
+            <v-card-text class="blue--text text-left"
+              ><p>
+                Adultos(20 - 59 anos) {{ indicadores.estratificacao.adultos }}
+              </p></v-card-text
+            >
+            <v-card-text class="blue--text text-left"
+              ><p>
+                Idosos(acima de 60 anos) {{ indicadores.estratificacao.idosos }}
+              </p></v-card-text
+            >
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -91,7 +103,7 @@ export default {
       axios.get("/indicadores").then((response) => {
         this.indicadores = response.data.data;
         var estr = this.indicadores.estratificacao;
-        this.sum = estr.jovens + estr.adultos + estr.idosos;   
+        this.sum = estr.jovens + estr.adultos + estr.idosos;
       });
     },
   },
@@ -115,7 +127,7 @@ h1 {
   margin-bottom: 2em;
 }
 
-.container{
+.container {
   width: 64%;
   background-color: white;
 }

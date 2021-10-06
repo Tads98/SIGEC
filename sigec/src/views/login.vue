@@ -1,84 +1,86 @@
 <template>
-  <v-app>
-    <v-main>
-      <div>
-          <h1>Sigec</h1>
-          <p color="white">Sistema de gestão de casos</p>
-          <v-btn
-                    class="rounded-pill"
-                    type="submit"
-                    color="indigo darken-4"
-                    x-large
-                    w-25
-                    block
-                    dark
-                    >Acessar Transparência</v-btn
+  <div class="sheet">
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-row>
+            <div class="mx-auto">
+              <h1>Sigec</h1>
+              <p color="white">Sistema de gestão de casos</p>
+              <v-btn
+                class="rounded-pill"
+                type="submit"
+                color="indigo darken-4"
+                x-large
+                w-25
+                block
+                dark
+                >Acessar Transparência
+              </v-btn>
+            </div>
+          </v-row>
+        </v-col>
+        <v-col lg="4">
+          <v-card elevation="4">
+            <v-card-title class="justify-center">Login</v-card-title>
+            <v-card-text>
+              <v-form @submit.prevent="submitForm">
+                <v-text-field
+                  label="E-mail"
+                  v-model="email"
+                  name="email"
+                  prepend-inner-icon="mdi-email"
+                  type="email"
+                  class="rounded-pill"
+                  outlined
+                ></v-text-field>
+                <v-text-field
+                  label="Senha"
+                  v-model="password"
+                  name="password"
+                  prepend-inner-icon="mdi-lock"
+                  type="password"
+                  class="rounded-pill"
+                  outlined
+                ></v-text-field>
+                <v-btn
+                  class="rounded-pill"
+                  type="submit"
+                  color="indigo darken-4"
+                  x-large
+                  block
+                  dark
+                  >Entrar</v-btn
+                >
+                <v-card-actions class="text--secondary">
+                  <v-spacer></v-spacer>
+                  <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
+                  Criar uma conta?
+                  <a href="#" class="pl-2" style="color: #000000"
+                    ><v-icon>mdi-arrow-right-bold</v-icon></a
                   >
-      </div>
-      <v-container style="margin-top: 10%; margin-left: 60%"> 
-        <v-row>
-          <v-col lg="4">
-            <v-card elevation="4">
-              <v-card-title class="justify-center">Login</v-card-title>
-              <v-card-text>
-                <v-form @submit.prevent="submitForm">
-                  <v-text-field
-                    label="E-mail"
-                    v-model="email"
-                    name="email"
-                    prepend-inner-icon="mdi-email"
-                    type="email"
-                    class="rounded-pill"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    label="Senha"
-                    v-model="password"
-                    name="password"
-                    prepend-inner-icon="mdi-lock"
-                    type="password"
-                    class="rounded-pill"
-                    outlined
-                  ></v-text-field>
-                  <v-btn
-                    class="rounded-pill"
-                    type="submit"
-                    color="indigo darken-4"
-                    x-large
-                    block
-                    dark
-                    >Entrar</v-btn
-                  >
-                  <v-card-actions class="text--secondary">
-                    <v-spacer></v-spacer>
-                    <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
-                    Criar uma conta?
-                    <a href="#" class="pl-2" style="color: #000000"
-                      ><v-icon>mdi-arrow-right-bold</v-icon></a
-                    >
-                  </v-card-actions>
-                </v-form>
-              </v-card-text>
-              <v-card-actions>
-                <v-img
-                  src="@/assets/Group 5.svg"
-                  alt="Lais"
-                  contain
-                  height="30"
-                ></v-img>
-                <v-img
-                  src="@/assets/g10-8.svg"
-                  alt="UFRN"
-                  contain
-                  height="30"
-                ></v-img>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-app>
+                </v-card-actions>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-img
+                src="@/assets/Group 5.svg"
+                alt="Lais"
+                contain
+                height="30"
+              ></v-img>
+              <v-img
+                src="@/assets/g10-8.svg"
+                alt="UFRN"
+                contain
+                height="30"
+              ></v-img>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -125,7 +127,21 @@ export default {
 </script>
 
 <style scoped>
-main {
+.sheet {
+  height: 100vh;
+  overflow: hidden;
   background-image: url("../assets/background.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  margin-top: 8%;
+  margin-right: 20%;
+}
+
+.mx-auto{
+  margin-top: 15%;
 }
 </style>

@@ -284,13 +284,13 @@ export default {
       var gen = caso.sexo == this.filtragem.sexo || 
         this.filtragem.sexo == "";
       var end =
-        caso.bairro == this.filtragem.bairro ||
+        caso.bairro.toLowerCase() == this.filtragem.bairro ||
         this.filtragem.bairro == "";
       var graduacao =
         caso.escolaridade == this.filtragem.escolaridade ||
         this.filtragem.escolaridade == "";
       var etnia =
-        caso.raca == this.filtragem.raca ||
+        caso.raca.toLowerCase() == this.filtragem.raca ||
         this.filtragem.raca == "";
       var diag =
         caso.status == this.filtragem.status || 

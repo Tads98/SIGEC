@@ -14,26 +14,142 @@
         <v-icon dark left> mdi-magnify </v-icon>
         Buscar
       </v-btn>
-
-      <v-btn class="ma-2" style="float: right;" color="blue-grey darken-1" dark>
+      <v-btn class="ma-2" style="float: right" color="blue-grey darken-1" dark>
         <v-icon dark left>mdi-filter-outline</v-icon>
         Filtrar
       </v-btn>
     </v-toolbar>
     <v-row>
-    <v-col>
-    <v-row>
-          <v-card-text>{{casos.length}} registros foram encontrados.</v-card-text>
+      <v-col>
+        <v-row>
+          <v-card-text
+            >{{ casos.length }} registros foram encontrados.</v-card-text
+          >
+        </v-row>
+      </v-col>
+      <v-col>
+        <v-row>
+          <v-btn class="button-float" color="blue-grey darken-1" dark>
+            <v-icon dark left>mdi-file-export</v-icon>
+            Exportar
+          </v-btn>
+        </v-row>
+      </v-col>
     </v-row>
-    </v-col>
-    <v-col>
-      <v-row>
-        <v-btn class="button-float" color="blue-grey darken-1" dark>
-          <v-icon dark left>mdi-file-export</v-icon>
-          Exportar
-        </v-btn>
-      </v-row>
-    </v-col>
+    <v-row>
+      <v-col>
+        <v-row>
+          <p>Data de nascimento</p>
+          <v-text-field
+            v-model="filtragem.dataNascimento"
+            type="date"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-text-field>
+        </v-row>
+        <v-row>
+          <p>Sexo</p>
+          <v-select
+            :items="['Masculino', 'Feminino', 'Não informado']"
+            v-model="filtragem.sexo"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-select>
+        </v-row>
+        <v-row>
+          <p>Nome da mãe</p>
+          <v-text-field type="text" dense solo hide-details single-line>
+          </v-text-field>
+        </v-row>
+        <v-row>
+          <p>Bairro</p>
+          <v-text-field
+            type="text"
+            dense
+            solo
+            hide-details
+            single-line
+            v-model="filtragem.bairro"
+          >
+          </v-text-field>
+        </v-row>
+        <v-row>
+          <p>Escolaridade</p>
+          <v-select
+            :items="[
+              'Ensino Fundamental',
+              'Ensino Médio',
+              'graduacao',
+              'mestrado',
+            ]"
+            v-model="filtragem.escolaridade"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-select>
+        </v-row>
+        <v-row>
+          <p>Raça</p>
+          <v-text-field
+            type="text"
+            dense
+            solo
+            hide-details
+            single-line
+            v-model="filtragem.raca"
+          >
+          </v-text-field>
+        </v-row>
+        <v-row>
+          <p>Status</p>
+          <v-select
+            :items="[
+              'Diagnosticado',
+              'Descartado',
+              'Em tratamento',
+              'Encerrado',
+            ]"
+            v-model="filtragem.status"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-select>
+        </v-row>
+        <v-row>
+          <p>Data de abertura</p>
+          <v-text-field
+            type="date"
+            v-model="filtragem.dataAbertura"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-text-field>
+        </v-row>
+        <v-row>
+          <p>Data de encerramento</p>
+          <v-text-field
+            type="date"
+            v-model="filtragem.dataencerramento"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-text-field>
+        </v-row>
+      </v-col>
     </v-row>
     <v-card
       v-for="caso in casos"
@@ -112,6 +228,16 @@ export default {
     return {
       casos: [],
       pesquisa: "",
+      filtragem: {
+        dataNasc: "",
+        sexo: "",
+        bairro: "",
+        escolaridade: "",
+        raca: "",
+        status: "",
+        dataAbertura: "",
+        dataencerramento: "",
+      },
     };
   },
 
@@ -124,7 +250,7 @@ export default {
     },
 
     search() {
-      if (this.pesquisa != "") {
+      // if (this.pesquisa != "") {
         axios
           .get("/casos")
           .then((response) => {
@@ -132,20 +258,76 @@ export default {
             this.casos = casos.filter((caso) => this.filtrarCasos(caso));
           })
           .catch((error) => console.log(error));
-      } else {
-        this.buscaCasos();
+      // } else {
+      //   this.buscaCasos();
+      // }
+      // console.log(this.casos);
+    },
+
+    formatDate(data, format) {
+      const date = data.split("-");
+      if (format == "dmy") {
+        return new Date(date[2], date[1], date[0]);
       }
-      console.log(this.casos);
+      return new Date(date[0], date[1], date[2]);
+    },
+
+    dateCompare(data, filter) {
+      var resp = this.formatDate(data, "dmy");
+      var resp2 = this.formatDate(filter, "ymd");
+      return resp.getTime() == resp2.getTime() || filter == "";
     },
 
     filtrarCasos(caso) {
-      if (caso.nome.toLowerCase().includes(this.pesquisa)) {
-        return caso;
-      }
-      if (caso.bairro.toLowerCase().includes(this.pesquisa)) {
+      var ident =
+        caso.nome.toLowerCase().includes(this.pesquisa) || this.pesquisa == "";
+      var gen = caso.sexo == this.filtragem.sexo || this.filtragem.sexo == "";
+      var end =
+        caso.bairro.toLowerCase().includes(this.filtragem.bairro) ||
+        this.filtragem.bairro == "";
+      var graduacao =
+        caso.escolaridade == this.filtragem.escolaridade ||
+        this.filtragem.escolaridade == "";
+      var etnia =
+        caso.raca.toLowerCase().includes(this.filtragem.raca) ||
+        this.filtragem.raca == "";
+      var diag =
+        caso.status == this.filtragem.status || this.filtragem.status == "";
+
+      var dataNasc = this.dateCompare(caso.dataNasc, 
+          this.filtragem.dataNasc
+      );
+
+      var dataAbertura = this.dateCompare(
+        caso.dataAbertura,
+        this.filtragem.dataAbertura
+      );
+
+      var dataencerramento = this.dateCompare(
+        caso.dataencerramento,
+        this.filtragem.dataencerramento
+      );
+
+      if (
+        ident &&
+        gen &&
+        end &&
+        graduacao &&
+        etnia &&
+        diag &&
+        dataNasc &&
+        dataAbertura &&
+        dataencerramento
+      ) {
         return caso;
       }
     },
+    // if (caso.nome.toLowerCase().includes(this.pesquisa)) {
+    //   return caso;
+    // }
+    // if (caso.bairro.toLowerCase().includes(this.pesquisa)) {
+    //   return caso;
+    // }
   },
 };
 </script>
@@ -155,8 +337,8 @@ export default {
   margin-top: 10%;
 }
 
-.button-float{
-    margin-top: 5%;
-    margin-left: 60%;
+.button-float {
+  margin-top: 5%;
+  margin-left: 60%;
 }
 </style>

@@ -56,40 +56,40 @@ export default {
     };
   },
 
-  // methods: {
-  //   addVinculo() {
-  //     axios({
-  //       method: "post",
-  //       url: "vinculos",
-  //       data: {
-  //         perfil: this.perfil,
-  //         estabelecimento: this.estabelecimento,
-  //       },
-  //     })
-  //       .then((response) => {
-  //         this.perfil = "";
-  //         this.estabelecimento = "";
+  methods: {
+     addVinculo() {
+       axios({
+         method: "post",
+         url: "vinculos",
+         data: {
+           perfil: this.perfil,
+           estabelecimento: this.estabelecimento,
+         },
+       })
+         .then((response) => {
+           this.perfil = "";
+           this.estabelecimento = "";
 
-  //         console.log(response);
-  //         this.$router.push("/dashboard");
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   },
-  // },
+           console.log(response);
+          //  this.$router.push("/dashboard");
+         })
+         .catch((error) => {
+           console.log(error);
+         });
+     },
+   },
 
-  methods:{
-    addVinculo(){
-      const formData = {
-        perfil: this.perfil,
-        estabelecimento: this.estabelecimento
-      }
-      axios.post('vinculo', formData)
-      .then(response => console.log(response))
-      .catch(error => (console.log(error)))
-    }
-  }
+  // methods:{
+  //   addVinculo(){
+  //     const formData = {
+  //       perfil: this.perfil,
+  //       estabelecimento: this.estabelecimento
+  //     }
+  //     axios.post('vinculo', formData)
+  //     .then(response => console.log(response))
+  //     .catch(error => (console.log(error)))
+  //   }
+  // }
 };
 </script>
 

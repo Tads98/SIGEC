@@ -2,7 +2,7 @@
   <div class="sheet">
     <v-container>
       <v-row>
-        <v-col>
+        <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
               <h1>Sigec</h1>

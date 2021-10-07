@@ -2,7 +2,7 @@
   <div class="sheet">
     <v-container>
       <v-row>
-        <v-col>
+        <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
               <h1>Sigec</h1>
@@ -21,7 +21,7 @@
           </v-row>
         </v-col>
         <v-col lg="4">
-          <v-card elevation="4">
+          <v-card elevation="8">
             <v-card-title class="justify-center">Login</v-card-title>
             <v-card-text>
               <v-form @submit.prevent="submitForm">

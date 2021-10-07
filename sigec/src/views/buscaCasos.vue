@@ -229,14 +229,14 @@ export default {
       casos: [],
       pesquisa: "",
       filtragem: {
-        dataNasc: "",
+        data_de_nascimento: "",
         sexo: "",
         bairro: "",
         escolaridade: "",
         raca: "",
         status: "",
-        dataAbertura: "",
-        dataencerramento: "",
+        data_abertura: "",
+        data_encerramento: "",
       },
     };
   },
@@ -281,31 +281,33 @@ export default {
     filtrarCasos(caso) {
       var ident =
         caso.nome.toLowerCase().includes(this.pesquisa) || this.pesquisa == "";
-      var gen = caso.sexo == this.filtragem.sexo || this.filtragem.sexo == "";
+      var gen = caso.sexo == this.filtragem.sexo || 
+        this.filtragem.sexo == "";
       var end =
-        caso.bairro.toLowerCase().includes(this.filtragem.bairro) ||
+        caso.bairro == this.filtragem.bairro ||
         this.filtragem.bairro == "";
       var graduacao =
         caso.escolaridade == this.filtragem.escolaridade ||
         this.filtragem.escolaridade == "";
       var etnia =
-        caso.raca.toLowerCase().includes(this.filtragem.raca) ||
+        caso.raca == this.filtragem.raca ||
         this.filtragem.raca == "";
       var diag =
-        caso.status == this.filtragem.status || this.filtragem.status == "";
+        caso.status == this.filtragem.status || 
+        this.filtragem.status == "";
 
-      var dataNasc = this.dateCompare(caso.dataNasc, 
-          this.filtragem.dataNasc
+      var data_de_nascimento = this.dateCompare(caso.data_de_nascimento, 
+          this.filtragem.data_de_nascimento
       );
 
-      var dataAbertura = this.dateCompare(
-        caso.dataAbertura,
-        this.filtragem.dataAbertura
+      var data_abertura = this.dateCompare(
+        caso.data_abertura,
+        this.filtragem.data_abertura
       );
 
-      var dataencerramento = this.dateCompare(
-        caso.dataencerramento,
-        this.filtragem.dataencerramento
+      var data_encerramento = this.dateCompare(
+        caso.data_encerramento,
+        this.filtragem.data_encerramento
       );
 
       if (
@@ -315,9 +317,9 @@ export default {
         graduacao &&
         etnia &&
         diag &&
-        dataNasc &&
-        dataAbertura &&
-        dataencerramento
+        data_de_nascimento &&
+        data_abertura &&
+        data_encerramento
       ) {
         return caso;
       }

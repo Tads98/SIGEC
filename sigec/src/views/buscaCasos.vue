@@ -19,8 +19,12 @@
         Filtrar
       </v-btn>
     </v-toolbar>
-      <v-container class="mt-5 mb-5">
+      <v-container class="deep-purple--text mt-5 mb-5">
       <v-row v-if="filtragem.aberta">
+         <v-card-text>
+            <h2>Filtros</h2>
+            Preencha pelo menos um dos campos de pesquisa abaixo.
+        </v-card-text>
         <v-col>
           <v-row class="mx-auto">
             <p>Data de nascimento</p>
@@ -62,6 +66,16 @@
               single-line
             >
             </v-select>
+          </v-row>
+          <v-row class="mt-5">
+            <v-btn @click="search()" class="ma-2" color="amber darken-2" dark>
+              <v-icon dark left> mdi-eraser </v-icon>
+              Limpar
+            </v-btn>
+            <v-btn @click="search()" class="ma-2" color="indigo darken-4" dark>
+              <v-icon dark left> mdi-magnify </v-icon>
+              Buscar
+            </v-btn>
           </v-row>
         </v-col>
         <v-col>

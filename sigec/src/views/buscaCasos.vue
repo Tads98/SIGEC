@@ -19,6 +19,127 @@
         Filtrar
       </v-btn>
     </v-toolbar>
+      <v-container class="mt-5 mb-5">
+      <v-row>
+        <v-col>
+          <v-row class="mx-auto">
+            <p>Data de nascimento</p>
+            <v-text-field
+              v-model="filtragem.dataNascimento"
+              type="date"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-text-field>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Bairro</p>
+            <v-text-field
+              type="text"
+              dense
+              solo
+              hide-details
+              single-line
+              v-model="filtragem.bairro"
+            >
+            </v-text-field>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Status</p>
+            <v-select
+              :items="[
+                'Diagnosticado',
+                'Descartado',
+                'Em tratamento',
+                'Encerrado',
+              ]"
+              v-model="filtragem.status"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-select>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-row class="mx-auto">
+            <p>Sexo</p>
+            <v-select
+              :items="['Masculino', 'Feminino', 'Não informado']"
+              v-model="filtragem.sexo"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-select>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Escolaridade</p>
+            <v-select
+              :items="[
+                'Ensino Fundamental',
+                'Ensino Médio',
+                'graduacao',
+                'mestrado',
+              ]"
+              v-model="filtragem.escolaridade"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-select>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Data de abertura</p>
+            <v-text-field
+              type="date"
+              v-model="filtragem.dataAbertura"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-text-field>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-row class="mx-auto">
+            <p>Nome da mãe</p>
+            <v-text-field type="text" dense solo hide-details single-line>
+            </v-text-field>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Raça</p>
+            <v-text-field
+              type="text"
+              dense
+              solo
+              hide-details
+              single-line
+              v-model="filtragem.raca"
+            >
+            </v-text-field>
+          </v-row>
+          <v-row class="mx-auto">
+            <p>Data de encerramento</p>
+            <v-text-field
+              type="date"
+              v-model="filtragem.dataencerramento"
+              dense
+              solo
+              hide-details
+              single-line
+            >
+            </v-text-field>
+          </v-row>
+        </v-col>
+      </v-row>
+      </v-container>
     <v-row>
       <v-col>
         <v-row>
@@ -33,121 +154,6 @@
             <v-icon dark left>mdi-file-export</v-icon>
             Exportar
           </v-btn>
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-row>
-          <p>Data de nascimento</p>
-          <v-text-field
-            v-model="filtragem.dataNascimento"
-            type="date"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-text-field>
-        </v-row>
-        <v-row>
-          <p>Sexo</p>
-          <v-select
-            :items="['Masculino', 'Feminino', 'Não informado']"
-            v-model="filtragem.sexo"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-select>
-        </v-row>
-        <v-row>
-          <p>Nome da mãe</p>
-          <v-text-field type="text" dense solo hide-details single-line>
-          </v-text-field>
-        </v-row>
-        <v-row>
-          <p>Bairro</p>
-          <v-text-field
-            type="text"
-            dense
-            solo
-            hide-details
-            single-line
-            v-model="filtragem.bairro"
-          >
-          </v-text-field>
-        </v-row>
-        <v-row>
-          <p>Escolaridade</p>
-          <v-select
-            :items="[
-              'Ensino Fundamental',
-              'Ensino Médio',
-              'graduacao',
-              'mestrado',
-            ]"
-            v-model="filtragem.escolaridade"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-select>
-        </v-row>
-        <v-row>
-          <p>Raça</p>
-          <v-text-field
-            type="text"
-            dense
-            solo
-            hide-details
-            single-line
-            v-model="filtragem.raca"
-          >
-          </v-text-field>
-        </v-row>
-        <v-row>
-          <p>Status</p>
-          <v-select
-            :items="[
-              'Diagnosticado',
-              'Descartado',
-              'Em tratamento',
-              'Encerrado',
-            ]"
-            v-model="filtragem.status"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-select>
-        </v-row>
-        <v-row>
-          <p>Data de abertura</p>
-          <v-text-field
-            type="date"
-            v-model="filtragem.dataAbertura"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-text-field>
-        </v-row>
-        <v-row>
-          <p>Data de encerramento</p>
-          <v-text-field
-            type="date"
-            v-model="filtragem.dataencerramento"
-            dense
-            solo
-            hide-details
-            single-line
-          >
-          </v-text-field>
         </v-row>
       </v-col>
     </v-row>
@@ -251,13 +257,13 @@ export default {
 
     search() {
       // if (this.pesquisa != "") {
-        axios
-          .get("/casos")
-          .then((response) => {
-            var casos = response.data.data;
-            this.casos = casos.filter((caso) => this.filtrarCasos(caso));
-          })
-          .catch((error) => console.log(error));
+      axios
+        .get("/casos")
+        .then((response) => {
+          var casos = response.data.data;
+          this.casos = casos.filter((caso) => this.filtrarCasos(caso));
+        })
+        .catch((error) => console.log(error));
       // } else {
       //   this.buscaCasos();
       // }
@@ -281,8 +287,7 @@ export default {
     filtrarCasos(caso) {
       var ident =
         caso.nome.toLowerCase().includes(this.pesquisa) || this.pesquisa == "";
-      var gen = caso.sexo == this.filtragem.sexo || 
-        this.filtragem.sexo == "";
+      var gen = caso.sexo == this.filtragem.sexo || this.filtragem.sexo == "";
       var end =
         caso.bairro.toLowerCase() == this.filtragem.bairro ||
         this.filtragem.bairro == "";
@@ -293,11 +298,11 @@ export default {
         caso.raca.toLowerCase() == this.filtragem.raca ||
         this.filtragem.raca == "";
       var diag =
-        caso.status == this.filtragem.status || 
-        this.filtragem.status == "";
+        caso.status == this.filtragem.status || this.filtragem.status == "";
 
-      var data_de_nascimento = this.dateCompare(caso.data_de_nascimento, 
-          this.filtragem.data_de_nascimento
+      var data_de_nascimento = this.dateCompare(
+        caso.data_de_nascimento,
+        this.filtragem.data_de_nascimento
       );
 
       var data_abertura = this.dateCompare(

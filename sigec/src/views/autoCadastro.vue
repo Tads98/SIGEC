@@ -5,15 +5,12 @@
         <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
-              <h1>Sigec</h1>
-              <p color="white">Sistema de gestão de casos</p>
+              <h1 class="orange--text">Sigec</h1>
+              <p class="white--text">Sistema de gestão de casos</p>
               <v-btn
                 class="rounded-pill"
                 type="submit"
                 color="indigo darken-4"
-                x-large
-                w-25
-                block
                 dark
                 >Acessar Transparência
               </v-btn>

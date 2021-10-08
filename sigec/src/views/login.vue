@@ -5,13 +5,13 @@
         <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
-              <h1>Sigec</h1>
-              <p color="white">Sistema de gestão de casos</p>
+              <h1 class="orange--text">Sigec</h1>
+              <p class="white--text">Sistema de gestão de casos</p>
               <v-btn
                 class="rounded-pill"
                 type="submit"
                 color="indigo darken-4"
-                x-large
+                
                 w-25
                 block
                 dark
@@ -22,7 +22,7 @@
         </v-col>
         <v-col lg="4">
           <v-card height="490" elevation="8">
-            <v-card-title class="justify-center">Login</v-card-title>
+            <v-card-title class="deep-purple--text justify-center">Login</v-card-title>
             <v-card-text>
               <v-form @submit.prevent="submitForm">
                 <v-text-field
@@ -57,7 +57,7 @@
                   <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
                   Criar uma conta?
                   <a href="#" class="pl-2" style="color: #000000"
-                    ><v-icon>mdi-arrow-right-bold</v-icon></a
+                    ><v-icon class="deep-purple--text">mdi-arrow-right-bold</v-icon></a
                   >
                 </v-card-actions>
                 <v-btn

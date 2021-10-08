@@ -6,7 +6,7 @@
     >
     <h1 class="font-weight-light" style="margin-left: 20%;">SIGEC</h1>
       <v-spacer></v-spacer>
-        <p class="mt-5 mr-5">Kelly Gomez</p>
+        <p class="d-none d-lg-block mt-5 mr-5">Kelly Gomez</p>
         <v-icon class="mr-5">
             large
             mdi-account-circle</v-icon>

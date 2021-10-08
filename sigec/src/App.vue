@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!-- <navbar /> -->
+    <navbar />
 
     
     <v-main>
@@ -10,14 +10,14 @@
 </template>
 
 <script>
-// import navbar from "@/components/parciais/navbar.vue";
+ import navbar from "@/components/parciais/navbar.vue";
 
 export default {
   name: 'App',
 
-    // components: {
-    //   navbar,
-    // },
+    components: {
+      navbar,
+    },
 
   data: () => ({
     //

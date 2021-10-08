@@ -14,13 +14,13 @@
         <v-icon dark left> mdi-magnify </v-icon>
         Buscar
       </v-btn>
-      <v-btn class="ma-2" style="float: right" color="blue-grey darken-1" dark>
+      <v-btn @click="filtragem.aberta = !filtragem.aberta" class="ma-2" style="float: right" color="blue-grey darken-1" dark>
         <v-icon dark left>mdi-filter-outline</v-icon>
         Filtrar
       </v-btn>
     </v-toolbar>
       <v-container class="mt-5 mb-5">
-      <v-row>
+      <v-row v-if="filtragem.aberta">
         <v-col>
           <v-row class="mx-auto">
             <p>Data de nascimento</p>
@@ -34,7 +34,7 @@
             >
             </v-text-field>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Bairro</p>
             <v-text-field
               type="text"
@@ -46,7 +46,7 @@
             >
             </v-text-field>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Status</p>
             <v-select
               :items="[
@@ -77,7 +77,7 @@
             >
             </v-select>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Escolaridade</p>
             <v-select
               :items="[
@@ -94,7 +94,7 @@
             >
             </v-select>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Data de abertura</p>
             <v-text-field
               type="date"
@@ -113,7 +113,7 @@
             <v-text-field type="text" dense solo hide-details single-line>
             </v-text-field>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Raça</p>
             <v-text-field
               type="text"
@@ -125,7 +125,7 @@
             >
             </v-text-field>
           </v-row>
-          <v-row class="mx-auto">
+          <v-row class="mx-auto mt-5">
             <p>Data de encerramento</p>
             <v-text-field
               type="date"
@@ -235,6 +235,7 @@ export default {
       casos: [],
       pesquisa: "",
       filtragem: {
+        aberta: false,
         data_de_nascimento: "",
         sexo: "",
         bairro: "",

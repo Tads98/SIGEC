@@ -61,10 +61,6 @@ export default {
     };
   },
   
-  // mounted() {
-  //   this.getVinculos();
-  // },
-
   methods: {
     getVinculos() {
       axios.get("/vinculos").then((response) => {

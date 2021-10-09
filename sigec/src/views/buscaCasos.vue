@@ -397,6 +397,7 @@ export default {
         status: "",
         data_abertura: "",
         data_encerramento: "",
+        estado: null,
       },
     };
   },
@@ -483,12 +484,13 @@ export default {
         return caso;
       }
     },
-    // if (caso.nome.toLowerCase().includes(this.pesquisa)) {
-    //   return caso;
-    // }
-    // if (caso.bairro.toLowerCase().includes(this.pesquisa)) {
-    //   return caso;
-    // }
+
+    statusEncerrado(){
+      var caso = this.casos[this.estado]
+      caso.status = "Encerrado";
+      // this.casos[this.estado].status = "Encerrado";
+      this.$store.commit("setCaso", this.casos[this.estado]);
+    },
   },
 };
 </script>

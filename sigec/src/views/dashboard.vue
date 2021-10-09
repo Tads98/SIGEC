@@ -1,4 +1,4 @@
-/* <template>
+ <template>
   <div class="center">
     <div class="blue--text d-none d-lg-block">
       <h1>Olá, Kelly Gomez</h1>
@@ -14,7 +14,7 @@
     <v-row>
       <v-col>
         <v-row>
-          <div v-for="vinculo in vinculos" :key="vinculo.id">
+          <div v-for="vinculo in $store.state.vinculos" :key="vinculo.id">
             <v-card class="mt-5 mr-5" max-width="344" outlined>
               <v-list-item three-line>
                 <v-list-item-content>
@@ -60,10 +60,10 @@ export default {
       vinculos: [],
     };
   },
-
-  mounted() {
-    this.getVinculos();
-  },
+  
+  // mounted() {
+  //   this.getVinculos();
+  // },
 
   methods: {
     getVinculos() {
@@ -71,23 +71,6 @@ export default {
         this.vinculos = response.data.data;
       });
     },
-  },
-
-  // data() {
-  //   return {
-  //     vinculos: [],
-  //   };
-  // },
-
-  // mounted() {
-  //   vinculos.list().then((response) => {
-  //     console.log(response.data);
-  //     this.vinculos = response.data.data;
-  //   });
-  // },
-
-  props: {
-    msg: String,
   },
 };
 </script>

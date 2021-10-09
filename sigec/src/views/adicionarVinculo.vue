@@ -14,6 +14,7 @@
       >
       </v-text-field>
       <v-text-field
+        v-model="estabelecimento"
         label="Estabelecimento de Saúde"
         name="estabelecimento"
         type="text"
@@ -58,38 +59,28 @@ export default {
 
   methods: {
      addVinculo() {
+      const formData ={
+        perfil: this.perfil,
+        estabelecimento: this.estabelecimento,
+      }
        axios({
          method: "post",
          url: "vinculos",
-         data: {
-           perfil: this.perfil,
-           estabelecimento: this.estabelecimento,
-         },
+         data:formData 
        })
          .then((response) => {
            this.perfil = "";
            this.estabelecimento = "";
 
            console.log(response);
-          //  this.$router.push("/dashboard");
+            this.$router.push("/dashboard");
          })
          .catch((error) => {
            console.log(error);
          });
+         this.$store.commit("setVinculo", formData)
      },
    },
-
-  // methods:{
-  //   addVinculo(){
-  //     const formData = {
-  //       perfil: this.perfil,
-  //       estabelecimento: this.estabelecimento
-  //     }
-  //     axios.post('vinculo', formData)
-  //     .then(response => console.log(response))
-  //     .catch(error => (console.log(error)))
-  //   }
-  // }
 };
 </script>
 

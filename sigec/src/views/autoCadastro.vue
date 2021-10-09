@@ -5,8 +5,8 @@
         <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
-              <h1 class="orange--text" style="font-size: 75px; font-weight: normal;">Sigec</h1>
-              <p class="white--text" style="font-size: 30px; font-weight: normal;">Sistema de gestão de casos</p>
+              <h1 class="title-1 orange--text">Sigec</h1>
+              <p class="subtitle white--text">Sistema de gestão de casos</p>
               <v-btn
                 depressed 
                 outlined 
@@ -181,6 +181,16 @@ export default {
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.title-1{
+  font-size: 75px; 
+  font-weight: normal;
+}
+
+.subtitle{
+  font-size: 30px; 
+  font-weight: normal;
 }
 
 .container {

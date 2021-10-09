@@ -1,16 +1,28 @@
 <template>
   <v-card tile max-width="800" class="mx-auto mt-5" height="98%">
-    <v-toolbar extended extension-height="10">
+    <v-toolbar class="d-none d-lg-block" extended extension-height="10">
       <v-toolbar-subtitle-2 class="shrink"
         >Pesquisar pelo nome ou CPF</v-toolbar-subtitle-2
       >
 
       <v-spacer></v-spacer>
 
-      <v-text-field class="rounded-pill" v-model="pesquisa" dense solo hide-details single-line>
+      <v-text-field
+        class="rounded-pill"
+        v-model="pesquisa"
+        dense
+        solo
+        hide-details
+        single-line
+      >
       </v-text-field>
 
-      <v-btn @click="search()" class="rounded-pill ma-2" color="grey lighten-1" dark>
+      <v-btn
+        @click="search()"
+        class="rounded-pill ma-2"
+        color="grey lighten-1"
+        dark
+      >
         <v-icon dark left> mdi-magnify </v-icon>
         Buscar
       </v-btn>
@@ -25,15 +37,57 @@
         Filtrar
       </v-btn>
     </v-toolbar>
+
+    <v-row class="d-lg-none d-xl-flex">
+      <v-col>
+        <v-row>
+          <h3 class="mx-auto">Pesquisar pelo nome ou CPF</h3>
+        </v-row>
+        <v-row style="width: 70%" class="mx-auto">
+          <v-text-field
+            class="rounded-pill"
+            v-model="pesquisa"
+            dense
+            solo
+            hide-details
+            single-line
+          >
+          </v-text-field>
+        </v-row>
+        <v-row style="margin-left: 13%">
+          <v-btn
+            @click="search()"
+            class="rounded-pill ma-2"
+            color="grey lighten-1"
+            dark
+          >
+            <v-icon dark left> mdi-magnify </v-icon>
+            Buscar
+          </v-btn>
+          <v-btn
+            @click="filtragem.aberta = !filtragem.aberta"
+            class="rounded-pill ma-2"
+            style="float: right"
+            color="blue-grey darken-1"
+            dark
+          >
+            <v-icon dark left>mdi-filter-outline</v-icon>
+            Filtrar
+          </v-btn>
+        </v-row>
+      </v-col>
+    </v-row>
     <v-container class="deep-purple--text mt-5 mb-5">
       <v-row v-if="filtragem.aberta">
-        <v-card-text>
+        <v-card-text class="mx-auto">
           <h2>Filtros</h2>
           Preencha pelo menos um dos campos de pesquisa abaixo.
         </v-card-text>
         <v-col>
           <v-row class="mx-auto">
             <p>Data de nascimento</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-text-field
               v-model="filtragem.dataNascimento"
               type="date"
@@ -47,6 +101,8 @@
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Bairro</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-text-field
               type="text"
               dense
@@ -60,6 +116,8 @@
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Status</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-select
               :items="[
                 'Diagnosticado',
@@ -76,20 +134,12 @@
             >
             </v-select>
           </v-row>
-          <v-row class="mt-5">
-            <v-btn @click="search()" class="rounded-pill ma-2" color="amber darken-2" dark>
-              <v-icon dark left> mdi-eraser </v-icon>
-              Limpar
-            </v-btn>
-            <v-btn @click="search()" class="rounded-pill ma-2" color="indigo darken-4" dark>
-              <v-icon dark left> mdi-magnify </v-icon>
-              Buscar
-            </v-btn>
-          </v-row>
         </v-col>
         <v-col>
           <v-row class="mx-auto">
             <p>Sexo</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-select
               :items="['Masculino', 'Feminino', 'Não informado']"
               v-model="filtragem.sexo"
@@ -103,6 +153,8 @@
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Escolaridade</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-select
               :items="[
                 'Ensino Fundamental',
@@ -121,6 +173,8 @@
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Data de abertura</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-text-field
               type="date"
               v-model="filtragem.dataAbertura"
@@ -136,11 +190,22 @@
         <v-col>
           <v-row class="mx-auto">
             <p>Nome da mãe</p>
-            <v-text-field class="rounded-pill" type="text" dense solo hide-details single-line>
+          </v-row>
+          <v-row class="mx-auto">
+            <v-text-field
+              class="rounded-pill"
+              type="text"
+              dense
+              solo
+              hide-details
+              single-line
+            >
             </v-text-field>
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Raça</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-text-field
               type="text"
               dense
@@ -154,6 +219,8 @@
           </v-row>
           <v-row class="mx-auto mt-5">
             <p>Data de encerramento</p>
+          </v-row>
+          <v-row class="mx-auto">
             <v-text-field
               type="date"
               v-model="filtragem.dataencerramento"
@@ -166,25 +233,74 @@
             </v-text-field>
           </v-row>
         </v-col>
+        <v-row class="d-none d-lg-block mx-auto mt-5">
+          <v-btn
+            @click="search()"
+            class="rounded-pill ma-2"
+            color="amber darken-2"
+            dark
+          >
+            <v-icon dark left> mdi-eraser </v-icon>
+            Limpar
+          </v-btn>
+          <v-btn
+            @click="search()"
+            class="rounded-pill ma-2"
+            color="indigo darken-4"
+            dark
+          >
+            <v-icon dark left> mdi-magnify </v-icon>
+            Buscar
+          </v-btn>
+        </v-row>
+
+        <v-col class="d-lg-none .d-xl-flex mr-5">
+          <v-row>
+            <v-btn
+              @click="search()"
+              class="rounded-pill ma-2"
+              color="amber darken-2"
+              style="width: 100%"
+              dark
+            >
+              <v-icon dark left> mdi-eraser </v-icon>
+              Limpar
+            </v-btn>
+          </v-row>
+          <v-row>
+            <v-btn
+              @click="search()"
+              class="rounded-pill ma-2"
+              color="indigo darken-4"
+              style="width: 100%"
+              dark
+            >
+              <v-icon dark left> mdi-magnify </v-icon>
+              Buscar
+            </v-btn>
+          </v-row>
+        </v-col>
       </v-row>
     </v-container>
-    <v-row class="ml-5 mr-5">
+    <v-row class="d-lg-none d-xl-flex ml-5 mr-5">
       <v-col>
         <v-row>
-          <v-card-text class="deep-purple--text"
+          <v-card-text class="mx-auto deep-purple--text"
             >{{ casos.length }} registros foram encontrados.</v-card-text
           >
-        </v-row>
-      </v-col>
-      <v-col>
-        <v-row>
-          <v-btn class="rounded-pill button-float" color="deep-purple darken-4" dark>
+          <v-btn
+            style="width: 100%"
+            class="mx-auto export rounded-pill button-float"
+            color="deep-purple darken-4"
+            dark
+          >
             <v-icon dark left>mdi-file-export</v-icon>
             Exportar
           </v-btn>
         </v-row>
       </v-col>
     </v-row>
+
     <v-card
       v-for="caso in casos"
       :key="caso.nome"
@@ -203,12 +319,17 @@
             <v-row>
               <p class="deep-purple--text">
                 Data de nascimento:
-                <strong class="black--text">{{ caso.data_de_nascimento }}</strong>
+                <strong class="black--text">{{
+                  caso.data_de_nascimento
+                }}</strong>
               </p>
             </v-row>
             <v-row>
               <p class="deep-purple--text">
-                Idade: <strong class="black--text">{{ caso.data_de_nascimento }}</strong>
+                Idade:
+                <strong class="black--text">{{
+                  caso.data_de_nascimento
+                }}</strong>
               </p>
             </v-row>
             <v-row>
@@ -227,7 +348,7 @@
             <v-row>
               <v-btn
                 type="submit"
-                class="rounded-pill mb-5 btn-lg"
+                class="button-1 rounded-pill mb-5 btn-lg"
                 color="indigo darken-4"
                 dark
               >
@@ -236,7 +357,11 @@
               </v-btn>
             </v-row>
             <v-row>
-              <v-btn class="rounded-pill mb-5 btn-lg" color="red darken-1" dark>
+              <v-btn
+                class="button-2 rounded-pill mb-5 btn-lg"
+                color="red darken-1"
+                dark
+              >
                 <v-icon left> mdi-close-circle-outline</v-icon>
                 Encerrar o caso
               </v-btn>
@@ -376,5 +501,16 @@ export default {
 .button-float {
   margin-top: 5%;
   margin-left: 60%;
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .button-1,
+  .button-2 {
+    margin-left: 3%;
+    width: 100%;
+  }
+
+  .export {
+  }
 }
 </style>

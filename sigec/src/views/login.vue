@@ -232,12 +232,4 @@ export default {
 
 }
 
-/* @media (min-width: 411px) and (max-width: 414px) {
-  
-  .v-card{
-    height: 600px !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-  }
-} */
 </style>

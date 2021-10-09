@@ -34,7 +34,7 @@
           Adicionar Vínculo
         </v-btn>
 
-        <v-btn class="rounded-pill mb-5 btn-lg" color="red darken-1" dark>
+        <v-btn class="d-none d-lg-block rounded-pill mb-5 btn-lg" color="red darken-1" dark>
           <v-icon> mdi-close-circle-outline</v-icon>
           Cancelar
         </v-btn>

@@ -5,23 +5,24 @@
         <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
-              <h1 class="orange--text">Sigec</h1>
-              <p class="white--text">Sistema de gestão de casos</p>
+              <h1 class="orange--text" style="font-size: 75px; font-weight: normal;">Sigec</h1>
+              <p class="white--text" style="font-size: 30px; font-weight: normal;">Sistema de gestão de casos</p>
               <v-btn
-                class="rounded-pill"
-                type="submit"
-                color="indigo darken-4"
+                depressed 
+                outlined 
+                class="rounded-pill fb-btn white--text"
                 
-                w-25
-                block
-                dark
                 >Acessar Transparência
               </v-btn>
             </div>
           </v-row>
         </v-col>
         <v-col lg="4">
-          <v-card height="490" elevation="8">
+          <v-card width="300" height="500" elevation="8">
+            <div class="d-lg-none d-xl-flex">
+              <h1 class="title-2 orange--text">Sigec</h1>
+              <v-divider class="divider mx-auto"></v-divider>
+            </div>
             <v-card-title class="deep-purple--text justify-center">Login</v-card-title>
             <v-card-text>
               <v-form @submit.prevent="submitForm">
@@ -33,6 +34,7 @@
                   type="email"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   label="Senha"
@@ -42,17 +44,17 @@
                   type="password"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-btn
                   class="rounded-pill"
                   type="submit"
                   color="indigo darken-4"
-                  x-large
                   block
                   dark
                   >Entrar</v-btn
                 >
-                <v-card-actions class="text--secondary">
+                <v-card-actions class="deep-purple--text">
                   <v-spacer></v-spacer>
                   <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
                   Criar uma conta?
@@ -61,18 +63,16 @@
                   >
                 </v-card-actions>
                 <v-btn
-                  class="d-lg-none d-xl-flex rounded-pill"
+                  class="d-lg-none d-xl-flex rounded-pill fb-btn blue--text" 
                   type="submit"
-                  color="indigo darken-4"
-                  x-large
-                  w-25
+                  depressed 
+                  outlined
                   block
-                  dark
                 >Acessar Transparência
               </v-btn>
               </v-form>
             </v-card-text>
-            <v-card-actions>
+            <v-card-actions class="wrapper">
               <v-img
                 src="@/assets/Group 5.svg"
                 alt="Lais"
@@ -147,11 +147,87 @@ export default {
 }
 
 .container{
-  margin-top: 8%;
+  margin-top: 5%;
   margin-right: 20%;
 }
 
 .mx-auto{
   margin-top: 15%;
 }
+
+.fb-btn .v-btn--outlined {
+    border: thin solid #CCCCCC;
+  }
+
+.wrapper {
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+.wrapper img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.title-2{
+  font-size: 40px; 
+  font-weight: normal;
+  margin-left: 33%
+}
+
+.divider{
+  margin-top: -1%; width:50%;
+}
+@media (min-width: 360px) and (max-width: 414px) {
+  
+  .v-card{
+    height: 600px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .v-card{
+    height: 530px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  .wrapper {
+    height: 200px;
+}
+
+}
+
+@media only screen and (max-width: 540px) {
+  .v-card{
+    height: 530px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  .wrapper {
+    height: 200px;
+}
+
+}
+
+@media only screen and (max-width: 280px) {
+  .wrapper {
+    margin-left: -5%;
+}
+
+}
+
+/* @media (min-width: 411px) and (max-width: 414px) {
+  
+  .v-card{
+    height: 600px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+} */
 </style>

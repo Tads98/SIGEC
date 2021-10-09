@@ -5,21 +5,20 @@
         <v-col class="d-none d-lg-block">
           <v-row>
             <div class="mx-auto">
-              <h1 class="orange--text">Sigec</h1>
-              <p class="white--text">Sistema de gestão de casos</p>
+              <h1 class="orange--text" style="font-size: 75px; font-weight: normal;">Sigec</h1>
+              <p class="white--text" style="font-size: 30px; font-weight: normal;">Sistema de gestão de casos</p>
               <v-btn
-                class="rounded-pill"
-                type="submit"
-                color="indigo darken-4"
-                dark
+                depressed 
+                outlined 
+                class="rounded-pill fb-btn white--text"
                 >Acessar Transparência
               </v-btn>
             </div>
           </v-row>
         </v-col>
         <v-col lg="4">
-          <v-card elevation="4" height="800">
-            <v-card-title class="justify-center">Autocadastro</v-card-title>
+          <v-card elevation="4" height="580">
+            <v-card-title class="deep-purple--text justify-center">Autocadastro</v-card-title>
             <v-card-text>
               <v-form @submit.prevent="submitForm">
                 <v-text-field
@@ -29,6 +28,7 @@
                   type="text"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="cpf"
@@ -37,6 +37,7 @@
                   type="text"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="dataNasc"
@@ -45,6 +46,7 @@
                   type="date"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="email"
@@ -53,6 +55,7 @@
                   type="email"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="telefone"
@@ -61,6 +64,7 @@
                   type="phone"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="senha"
@@ -69,6 +73,7 @@
                   type="password"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-text-field
                   v-model="resenha"
@@ -77,14 +82,15 @@
                   type="password"
                   class="rounded-pill"
                   outlined
+                  dense
                 ></v-text-field>
                 <v-btn
                   type="submit"
                   class="rounded-pill"
                   color="indigo darken-4"
-                  x-large
                   block
                   dark
+                  dense
                   >Cadastrar</v-btn
                 >
                 <v-card-actions class="text--secondary">
@@ -94,7 +100,7 @@
                 </v-card-actions>
               </v-form>
             </v-card-text>
-            <v-card-actions>
+            <v-card-actions class="wrapper">
               <v-img
                 src="@/assets/Group 5.svg"
                 alt="Lais"
@@ -184,5 +190,17 @@ export default {
 
 .mx-auto {
   margin-top: 15%;
+}
+
+.wrapper {
+    position: relative;
+    height: 300px;
+    width: 300px;
+}
+
+.wrapper img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 </style>

@@ -269,7 +269,7 @@
         </v-col>
         <v-row class="d-none d-lg-block mx-auto mt-5">
           <v-btn
-            @click="search()"
+            @click="FilterCleaner()"
             class="rounded-pill ma-2"
             color="amber darken-2"
             dark
@@ -291,7 +291,7 @@
         <v-col class="d-lg-none .d-xl-flex mr-5">
           <v-row>
             <v-btn
-              @click="search()"
+              @click="FilterCleaner()"
               class="rounded-pill ma-2"
               color="amber darken-2"
               style="width: 100%"
@@ -362,7 +362,7 @@
               <p class="deep-purple--text">
                 Idade:
                 <strong class="black--text">{{
-                  caso.data_de_nascimento
+                 getAge(caso.data_de_nascimento)
                 }}</strong>
               </p>
             </v-row>
@@ -421,6 +421,7 @@ export default {
   data() {
     return {
       casos: [],
+      resultado:[],
       pesquisa: "",
       filtragem: {
         aberta: false,
@@ -444,6 +445,7 @@ export default {
         .get("/casos")
         .then((response) => {
           this.casos = response.data.data;
+          this.resultado = response.data.data;
         })
         .catch((error) => console.log(error));
     },
@@ -454,7 +456,7 @@ export default {
       //   .get("/casos")
       //   .then((response) => {
       //     var casos = response.data.data;
-          this.casos = this.$store.state.casos.filter((caso) => this.filtrarCasos(caso));
+          this.resultado = this.$store.state.casos.filter((caso) => this.filtrarCasos(caso));
         // })
         // .catch((error) => console.log(error));
       // } else {
@@ -469,6 +471,13 @@ export default {
         return new Date(date[2], date[1], date[0]);
       }
       return new Date(date[0], date[1], date[2]);
+    },
+
+    getAge(a){
+      const birth = this.formatDate(a, "dmy");
+      const atual = new Date();
+      const date = Math.abs(atual - birth);
+      return parseInt(date / 31536000000);
     },
 
     dateCompare(data, filter) {
@@ -530,6 +539,18 @@ export default {
       this.$store.commit("setCaso", this.casos[this.estado]);
       this.overlay = false;
     },
+
+    FilterCleaner(){
+      this.filtragem.data_de_nascimento = "";
+      this.filtragem.bairro = "";
+      this.filtragem.sexo = "";
+      this.filtragem.escolaridade = "";
+      this.filtragem.raca = "";
+      this.filtragem.status = "";
+      this.filtragem.data_abertura = "";
+      this.filtragem.data_encerramento = "";
+      this.search();
+    }
   },
 };
 </script>

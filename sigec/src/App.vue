@@ -17,11 +17,22 @@ export default {
       navbar,
     },
 
-
   beforeMount(){
     this.$store.dispatch('getVinculos');
   },
 
+  mounted(){
+    this.verificarAutenticacao();
+  },
+
+  methods:{
+       verificarAutenticacao(){
+           var auth = this.$route.name != 'login' && this.$route.name != 'transparencia';
+           if(auth && !this.$store.state.isAuthenticated){
+               this.$router.push({name: 'login'});
+           }
+       }
+   },
 
   data: () => ({
     //

@@ -511,8 +511,5 @@ export default {
     margin-left: 3%;
     width: 100%;
   }
-
-  .export {
-  }
 }
 </style>

@@ -35,8 +35,13 @@
           Adicionar Vínculo
         </v-btn>
 
-        <v-btn class="d-none d-lg-block rounded-pill mb-5 btn-lg" color="red darken-1" dark>
-          <v-icon> mdi-close-circle-outline</v-icon>
+        <v-btn
+          to="dashboard"
+          class="d-none d-lg-block rounded-pill mb-5 btn-lg"
+          color="red darken-1"
+          dark
+        >
+          <v-icon> mdi-plus-circle-outline</v-icon>
           Cancelar
         </v-btn>
       </v-card-actions>

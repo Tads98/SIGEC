@@ -8,6 +8,7 @@
               <h1 class="title-1 orange--text">Sigec</h1>
               <p class="subtitle white--text">Sistema de gestão de casos</p>
               <v-btn
+                to="transparencia"
                 depressed 
                 outlined 
                 class="rounded-pill fb-btn white--text"
@@ -47,6 +48,7 @@
                   dense
                 ></v-text-field>
                 <v-btn
+                  to="dashboard"
                   class="rounded-pill"
                   type="submit"
                   color="indigo darken-4"
@@ -56,13 +58,15 @@
                 >
                 <v-card-actions class="deep-purple--text">
                   <v-spacer></v-spacer>
-                  <!-- <router-link :to="{ name: 'SignUp' }">Sign Up</router-link> -->
-                  Criar uma conta?
-                  <a href="#" class="pl-2" style="color: #000000"
-                    ><v-icon class="deep-purple--text">mdi-arrow-right-bold</v-icon></a
+                  <v-btn text
+                    to="autoCadastro"
                   >
+                    Criar uma conta?
+                    <v-icon right class="deep-purple--text">mdi-arrow-right-bold</v-icon>
+                  </v-btn>
                 </v-card-actions>
                 <v-btn
+                  to="transparencia"
                   class="d-lg-none d-xl-flex rounded-pill fb-btn blue--text" 
                   type="submit"
                   depressed 

@@ -1,17 +1,28 @@
  <template>
   <div class="center">
-    <div class="blue--text d-none d-lg-block">
-      <h1>Olá, Kelly Gomez</h1>
-      <p class="float-right">
-        Adicione um vínculo <v-icon class="blue--text"> mdi-plus-circle-outline</v-icon>
-      </p>
-      <p>Selecione um vínculo</p>
-      <v-divider color="light-blue"></v-divider>
-    </div>
+    <v-row class="align-end blue--text d-none d-lg-flex">
+      <div class="ml-3">
+        <h1>Olá, Kelly Gomez</h1>
+        <p>Selecione um vínculo</p>
+      </div>
+      <v-spacer></v-spacer>
+      <div> 
+        <v-btn text
+          to="adicionarVinculo"
+          class="blue--text"
+        >
+        <p>
+          Adicione um vínculo
+          <v-icon> mdi-plus-circle-outline</v-icon>
+        </p>
+        </v-btn>
+      </div>
+    </v-row>
     <div>
+      <v-divider color="light-blue"></v-divider>
       <h4 class="d-lg-none d-md-none d-xl-flex blue--text">Meu perfil - Kelly Gomez</h4>
     </div>
-    <v-row>
+    <v-row class="ml-1">
       <v-col>
         <v-row>
           <div v-for="vinculo in $store.state.vinculos" :key="vinculo.id">
@@ -31,6 +42,7 @@
 
               <v-card-actions>
                 <v-btn
+                  to="buscaCasos"
                   name="submit-button"
                   type="submit"
                   dark

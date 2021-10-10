@@ -1,18 +1,18 @@
 <template>
 <div>
   <v-overlay :value="overlay">
-    <v-card>
-      <v-btn>
+    <v-card light width="50vw">
+      <v-btn to="dashboard" absolute right icon>
         <v-icon>mdi-close</v-icon>
-        <div>
-          <v-icon>
+      </v-btn>
+        <div class="d-flex flex-column justify-center align-center ">
+          <v-icon color="#03972A" size="7em">
              mdi-check-circle
           </v-icon>
           <v-card-title>
             Vinculo adicionado com sucesso
           </v-card-title>
         </div>
-      </v-btn>
     </v-card>
   </v-overlay>
 

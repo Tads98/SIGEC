@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container>
+  <v-container>
     <div width="100%" class="ajustes-label d-none d-md-flex ">
       <strong>Estabelecimento de saúde:</strong>
       {{ vinculo.estabelecimento }}
@@ -25,23 +25,43 @@
         </v-row>
       </v-col>
   </v-container>
+  <div class="d-lg-none .d-xl-flex">
+      <v-btn text 
+    to="/dashboard"
+    >
+    <v-col>
+      <v-row>
+        <v-icon>mdi-arrow-left-drop-circle</v-icon>
+        <p class="mt-4">voltar</p>
+      </v-row>
+    </v-col>
+    </v-btn>
+      <v-row class="mx-auto d-lg-none .d-xl-flex">
+          <v-icon class="ml-5">mdi-home-outline</v-icon>
+          <p class="mt-3">Gestão do caso</p>
+      </v-row>
+  </div>
   <v-card tile max-width="800" class="mx-auto mt-5" height="98%">
     <v-overlay :value="overlay">
-      <v-card>
-        <v-row>
+      <v-card light width="50vw">
+        <v-row class="title ma-0">
           <v-card-title>Encerramento de caso</v-card-title>
           <v-spacer></v-spacer>
-          <v-btn class="float-right white--text">
+          <v-btn @click="overlay = false" class="float-right align-self-center white--text" icon>
             <v-icon>mdi-close-circle-outline</v-icon>
           </v-btn>
-          <div>
-            <v-subheader class="text-center">
+          <div class="pa-16">
+            <v-subheader class="mb-10 text-center">
               Você está encerramento o caso, deseja continuar?
             </v-subheader>
             <v-row>
               <v-col>
                 <v-btn
                   @click="overlay = false"
+                  width="100%"
+                  color="#9D0208"
+                  class="text-none white--text"
+                  rounded
                 >
                   <v-icon>mdi-close</v-icon>
                   cancelar
@@ -50,6 +70,10 @@
               <v-col>
                 <v-btn
                   @click="statusEncerrado"
+                  width="100%"
+                  color="#E63946"
+                  class="text-none white--text"
+                  rounded
                 >
                   <v-icon>mdi-cancel</v-icon>
                   Encerrar o caso
@@ -342,14 +366,14 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-row v-if="casos.length == 0">
+    <v-row v-if="casos.length == 0" class="mx-auto" >
       <v-card
         outlined
         width="100%"
         class="rounded-lg d-flex flex-column align-center"
       >
         <v-img src="@/assets/Group 44.svg" max-width="160px"></v-img>
-        <v-card-text>Nenhum registro encontrado.</v-card-text>
+        <v-card-text class="text-center pb-0">Nenhum registro encontrado.</v-card-text>
       </v-card>
     </v-row>
     <v-row v-else class="d-lg-none d-xl-flex ml-5 mr-5">
@@ -604,6 +628,11 @@ export default {
 
 <style scoped>
 
+.title {
+  background-color: var(--color3);
+  color: white;
+}
+
 .ajustes-label {
   padding-left: 19%;
   padding-right: 19%;
@@ -621,6 +650,11 @@ export default {
   margin-top: 5%;
   margin-left: 60%;
 }
+
+.v-overlay .v-card{
+    width: inherit !important;
+    margin: 1em;
+  }
 
 @media (min-width: 360px) and (max-width: 414px) {
   .button-1,

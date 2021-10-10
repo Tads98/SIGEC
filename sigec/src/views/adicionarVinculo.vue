@@ -1,4 +1,20 @@
 <template>
+<div>
+  <v-overlay :value="overlay">
+    <v-card>
+      <v-btn>
+        <v-icon>mdi-close</v-icon>
+        <div>
+          <v-icon>
+             mdi-check-circle
+          </v-icon>
+          <v-card-title>
+            Vinculo adicionado com sucesso
+          </v-card-title>
+        </div>
+      </v-btn>
+    </v-card>
+  </v-overlay>
   <v-card class="mx-auto" max-width="750" style="margin-top: 5%">
     <v-card-title id="position">Adicionar um novo vínculo</v-card-title>
 
@@ -47,6 +63,7 @@
       </v-card-actions>
     </v-form>
   </v-card>
+</div>
 </template>
 
 <script>
@@ -59,6 +76,7 @@ export default {
     return {
       perfil: "",
       estabelecimento: "",
+      overlay: false,
     };
   },
 
@@ -84,6 +102,7 @@ export default {
            console.log(error);
          });
          this.$store.commit("setVinculo", formData)
+         this.overlay = true;
      },
    },
 };

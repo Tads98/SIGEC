@@ -1,4 +1,30 @@
 <template>
+  <div>
+    <v-container>
+    <div width="100%" class="ajustes-label d-none d-md-flex ">
+      <strong>Estabelecimento de saúde:</strong>
+      {{ vinculo.estabelecimento }}
+    </div>
+      <v-col>
+        <v-row class="d-none d-md-flex">
+          <v-icon>mdi-home-outline</v-icon>
+          <v-breadcrumbs
+            divider="/"
+            :items="[
+              {
+                text: 'Inicio',
+                disabled: false,
+                to: '/dashboard',
+              },
+              {
+                text: 'Gestão de caso',
+                disabled: true,
+              },
+            ]"
+          ></v-breadcrumbs>
+        </v-row>
+      </v-col>
+  </v-container>
   <v-card tile max-width="800" class="mx-auto mt-5" height="98%">
     <v-overlay :value="overlay">
       <v-card>
@@ -34,31 +60,6 @@
         </v-row>
       </v-card>
     </v-overlay>
-    <div width="100%" class="ajustes-label d-none d-md-flex ">
-      <strong>Estabelecimento de saúde:</strong>
-      {{ vinculo.estabelecimento }}
-    </div>
-    <v-container>
-      <v-col>
-        <v-row class="d-none d-md-flex">
-          <v-icon>mdi-home-outline</v-icon>
-          <v-breadcrumbs
-            divider="/"
-            :items="[
-              {
-                text: 'Inicio',
-                disabled: false,
-                to: '/dashboard',
-              },
-              {
-                text: 'Gestão de caso',
-                disabled: true,
-              },
-            ]"
-          ></v-breadcrumbs>
-        </v-row>
-      </v-col>
-    </v-container>
     <v-toolbar class="d-none d-lg-block" extended extension-height="10">
       <v-toolbar-subtitle-2 class="shrink"
         >Pesquisar pelo nome ou CPF</v-toolbar-subtitle-2
@@ -441,6 +442,7 @@
       </v-container>
     </v-card>
   </v-card>
+</div>
 </template>
 
 <script>

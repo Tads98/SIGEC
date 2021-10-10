@@ -15,6 +15,19 @@
       </v-btn>
     </v-card>
   </v-overlay>
+
+  
+<v-container>
+  <v-btn text 
+  to="/dashboard"
+  >
+  <v-col>
+    <v-row>
+      <v-icon>mdi-arrow-left-drop-circle</v-icon>
+      <p class="mt-4">voltar</p>
+    </v-row>
+  </v-col>
+  </v-btn>
   <v-card class="mx-auto" max-width="750" style="margin-top: 5%">
     <v-card-title id="position">Adicionar um novo vínculo</v-card-title>
 
@@ -63,6 +76,7 @@
       </v-card-actions>
     </v-form>
   </v-card>
+</v-container>
 </div>
 </template>
 

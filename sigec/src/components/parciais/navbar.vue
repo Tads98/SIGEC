@@ -34,7 +34,7 @@
                   >
                 </v-list-item>
                  <v-list-item>
-                  <router-link class="text-decoration-none black--text" to="/dashboard"
+                  <router-link class="text-decoration-none black--text" to="/meuPerfil"
                     >Meu perfil</router-link
                   >
                 </v-list-item>

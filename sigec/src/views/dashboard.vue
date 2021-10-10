@@ -18,9 +18,12 @@
         </v-btn>
       </div>
     </v-row>
+      <v-divider color="light-blue" class="d-none d-lg-flex"></v-divider>
     <div>
-      <v-divider color="light-blue"></v-divider>
-      <h4 class="d-lg-none d-md-none d-xl-flex blue--text">Meu perfil - Kelly Gomez</h4>
+      <div class="d-lg-none d-md-none d-xl-flex blue--text">
+        <h4>Olá, Kelly Gomez</h4>
+        <p>selecione um vínculo</p>
+      </div>
     </div>
     <v-row class="ml-1">
       <v-col>
@@ -90,5 +93,37 @@ export default {
   width: 60%;
   padding: 10px;
 }
+
+@media (min-width: 426px) and (max-width: 915px) {
+  .ml-1{
+    width: 240px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+  .ml-1{
+    width: 1000px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+  .ml-1{
+    width: 1000px;
+  }
+}
+
+@media (min-width: 540px) and (max-width:  540px) {
+  .ml-1{
+    width: 230px;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .ml-1{
+    width: 200px;
+  }
+}
+
 </style>
  */

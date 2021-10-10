@@ -43,7 +43,7 @@
       <v-card-actions id="button-add">
         <v-btn
           type="submit"
-          class="rounded-pill mb-5 btn-lg"
+          class="add rounded-pill mb-5 btn-lg"
           color="indigo darken-4"
           dark
         >
@@ -118,5 +118,53 @@ export default {
 
 #button-add {
   margin-left: 5%;
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .mx-auto{
+    width: 85%;
+  }
+
+  .add{
+    width: 110%;
+    margin-left: -23px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .mx-auto{
+    width: 85%;
+  }
+
+  .add{
+    width: 110%;
+    margin-left: -23px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 540px) {
+  .mx-auto{
+    width: 95%;
+  }
+
+  .add{
+    width: 110%;
+    margin-left: -23px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .mx-auto{
+    width: 95%;
+  }
+
+  .add{
+    width: 110%;
+    margin-left: -23px;
+  }
+
+  #position{
+    font-size: 15px;
+  }
 }
 </style>

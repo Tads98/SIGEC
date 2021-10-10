@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <navbar v-if="$route.name!='login' && $route.name!='autoCadastro'"/>
+    <navbar v-if="$route.name!='login' && $route.name!='autoCadastro' && $route.name!='transparencia'"/>
     <v-main>
       <router-view/>
     </v-main>

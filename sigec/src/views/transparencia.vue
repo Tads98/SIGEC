@@ -1,6 +1,15 @@
 <template>
   <div class="sheet">
     <v-container class="mt-5">
+  
+      <v-btn text
+        to="/dashboard"
+        style="border: 1px solid orange"
+      >
+        <v-icon style="color:orange" class="ml-5">mdi-arrow-left-drop-circle</v-icon>
+        <p style="color:orange" class="mt-4 mr-5">voltar</p>
+      </v-btn>
+
       <h1>Transparência</h1>
       <v-row>
         <v-col>
@@ -41,19 +50,19 @@
             </v-card>
           </v-row>
           <v-row class="ma-0 mt-2">
-            <v-card width="100%" style="border: 1px solid blue">
-              <v-card-title class="blue--text justify-end"
-                ><v-icon color="blue darken-2">mdi-clipboard-text</v-icon
+            <v-card width="100%" style="border: 1px solid orange">
+              <v-card-title class="orange--text justify-end"
+                ><v-icon color="orange darken-2">mdi-clipboard-text</v-icon
                 >{{ indicadores.perdidos }}</v-card-title
               >
-              <v-card-text class="blue--text text-end"
+              <v-card-text class="orange--text text-end"
                 ><p>Casos perdidos</p></v-card-text
               >
             </v-card>
           </v-row>
         </v-col>
         <v-col>
-          <v-card style="border: 1px solid #006699">
+          <v-card height="247" style="border: 1px solid #006699">
             <v-card-title class="blue--text justify-end">{{
               sum
             }}</v-card-title>
@@ -63,17 +72,16 @@
             <v-card-text class="blue--text text-left"
               ><p>
                 jovens(0-19 anos) {{ indicadores.estratificacao.jovens }}
-              </p></v-card-text
-            >
-            <v-card-text class="blue--text text-left"
-              ><p>
+              </p>
+              <p>
                 Adultos(20 - 59 anos) {{ indicadores.estratificacao.adultos }}
-              </p></v-card-text
-            >
-            <v-card-text class="blue--text text-left"
-              ><p>
+              </p>
+
+              <p>
                 Idosos(acima de 60 anos) {{ indicadores.estratificacao.idosos }}
-              </p></v-card-text
+              </p>
+
+              </v-card-text
             >
           </v-card>
         </v-col>

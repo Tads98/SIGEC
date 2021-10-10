@@ -489,7 +489,7 @@ export default {
     },
 
     getVinculo(){
-      var vinculos = this.$$store.state.vinculos;
+      var vinculos = this.$store.state.vinculos;
       var v = this.$route.params.id;
       this.vinculo = vinculos[v];
     },

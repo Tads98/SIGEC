@@ -42,7 +42,7 @@ const routes = [
     },
 
     {
-        path: '/buscaCasos',
+        path: '/:id/buscaCasos',
         name: 'buscaCasos',
         component: buscaCasos
     },

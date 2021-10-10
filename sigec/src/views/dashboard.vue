@@ -25,7 +25,7 @@
     <v-row class="ml-1">
       <v-col>
         <v-row>
-          <div v-for="vinculo in $store.state.vinculos" :key="vinculo.id">
+          <div v-for="(vinculo, v) in $store.state.vinculos" :key="vinculo.id">
             <v-card class="mt-5 mr-5" max-width="344" outlined>
               <v-list-item three-line>
                 <v-list-item-content>
@@ -42,7 +42,7 @@
 
               <v-card-actions>
                 <v-btn
-                  to="buscaCasos"
+                  @click="$router.push({ name: 'buscaCasos', params: { id: v } })"
                   name="submit-button"
                   type="submit"
                   dark

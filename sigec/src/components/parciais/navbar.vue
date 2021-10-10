@@ -22,15 +22,24 @@
                  
                 <v-icon>
                     large
-                    mdi-chevron-double-down</v-icon>
+                    mdi-chevron-down</v-icon>
                 </v-btn>
             </template>
             <v-list>
-                <v-list-item
-                v-for="(item, index) in items"
-                :key="index"
-                >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item>
+                  <router-link
+                    class="text-decoration-none black--text"
+                    to="/adicionarVinculo"
+                    >Adicionar um vínculo</router-link
+                  >
+                </v-list-item>
+                 <v-list-item>
+                  <router-link class="text-decoration-none black--text" to="/dashboard"
+                    >Meu perfil</router-link
+                  >
+                </v-list-item>
+                 <v-list-item>
+                  <a class="text-decoration-none black--text" @click="logout()">Sair</a>
                 </v-list-item>
             </v-list>
             </v-menu>
@@ -40,12 +49,11 @@
 
 <script>
   export default {
-    data: () => ({
-      items: [
-        { title: 'Adicionar um vínculo' },
-        { title: 'Meu perfil' },
-        { title: 'Sair' },
-      ],
-    }),
-  }
+      methods: {
+      logout() {
+        this.$store.commit("logout");
+        this.$router.push("/");
+      },
+    },
+  };
 </script>

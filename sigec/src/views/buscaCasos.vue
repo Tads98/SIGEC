@@ -34,6 +34,31 @@
         </v-row>
       </v-card>
     </v-overlay>
+    <div width="100%" class="ajustes-label d-none d-md-flex ">
+      <strong>Estabelecimento de saúde:</strong>
+      {{ vinculo.estabelecimento }}
+    </div>
+    <v-container>
+      <v-col>
+        <v-row class="d-none d-md-flex">
+          <v-icon>mdi-home-outline</v-icon>
+          <v-breadcrumbs
+            divider="/"
+            :items="[
+              {
+                text: 'Inicio',
+                disabled: false,
+                to: '/dashboard',
+              },
+              {
+                text: 'Gestão de caso',
+                disabled: true,
+              },
+            ]"
+          ></v-breadcrumbs>
+        </v-row>
+      </v-col>
+    </v-container>
     <v-toolbar class="d-none d-lg-block" extended extension-height="10">
       <v-toolbar-subtitle-2 class="shrink"
         >Pesquisar pelo nome ou CPF</v-toolbar-subtitle-2
@@ -316,7 +341,17 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-row class="d-lg-none d-xl-flex ml-5 mr-5">
+    <v-row v-if="casos.length == 0">
+      <v-card
+        outlined
+        width="100%"
+        class="rounded-lg d-flex flex-column align-center"
+      >
+        <v-img src="@/assets/Group 44.svg" max-width="160px"></v-img>
+        <v-card-text>Nenhum registro encontrado.</v-card-text>
+      </v-card>
+    </v-row>
+    <v-row v-else class="d-lg-none d-xl-flex ml-5 mr-5">
       <v-col>
         <v-row>
           <v-card-text class="mx-auto deep-purple--text"
@@ -416,10 +451,13 @@ export default {
 
   created() {
     this.buscaCasos();
+    this.getVinculo();
+
   },
 
   data() {
     return {
+      vinculo: "",
       casos: [],
       resultado:[],
       pesquisa: "",
@@ -448,6 +486,12 @@ export default {
           this.resultado = response.data.data;
         })
         .catch((error) => console.log(error));
+    },
+
+    getVinculo(){
+      var vinculos = this.$$store.state.vinculos;
+      var v = this.$route.params.id;
+      this.vinculo = vinculos[v];
     },
 
     search() {
@@ -557,6 +601,16 @@ export default {
 </script>
 
 <style scoped>
+
+.ajustes-label {
+  padding-left: 19%;
+  padding-right: 19%;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
 .mr-5 {
   margin-top: 10%;
 }

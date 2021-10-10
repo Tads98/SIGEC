@@ -3,7 +3,7 @@
     <v-container class="mt-5">
   
       <v-btn text
-        to="/dashboard"
+        to="/"
         style="border: 1px solid orange"
       >
         <v-icon style="color:orange" class="ml-5">mdi-arrow-left-drop-circle</v-icon>

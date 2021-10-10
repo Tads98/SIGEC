@@ -8,6 +8,7 @@
               <h1 class="title-1 orange--text">Sigec</h1>
               <p class="subtitle white--text">Sistema de gestão de casos</p>
               <v-btn
+                to="transparencia"
                 depressed 
                 outlined 
                 class="rounded-pill fb-btn white--text"

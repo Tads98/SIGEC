@@ -336,7 +336,7 @@
     </v-row>
 
     <v-card
-      v-for="(caso, v) in resultado"
+      v-for="(caso, v) in casos"
       :key="caso.nome"
       max-width="90%"
       class="mx-auto mt-5 mb-5"
@@ -421,7 +421,6 @@ export default {
   data() {
     return {
       casos: [],
-      resultado: [],
       pesquisa: "",
       filtragem: {
         aberta: false,
@@ -445,7 +444,6 @@ export default {
         .get("/casos")
         .then((response) => {
           this.casos = response.data.data;
-          this.resultado = response.data.data;
         })
         .catch((error) => console.log(error));
     },
@@ -456,7 +454,7 @@ export default {
       //   .get("/casos")
       //   .then((response) => {
       //     var casos = response.data.data;
-          this.resultado = this.casos.filter((caso) => this.filtrarCasos(caso));
+          this.casos = this.$store.state.casos.filter((caso) => this.filtrarCasos(caso));
         // })
         // .catch((error) => console.log(error));
       // } else {

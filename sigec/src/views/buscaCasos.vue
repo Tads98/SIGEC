@@ -452,13 +452,14 @@ export default {
 
     search() {
       // if (this.pesquisa != "") {
-      // axios
-      //   .get("/casos")
-      //   .then((response) => {
-      //     var casos = response.data.data;
+       axios
+         .get("/casos")
+         .then((response) => {
+          var casos = response.data.data;
+          this.casos = casos.filter((caso) => this.filtrarCasos(caso));
           this.resultado = this.$store.state.casos.filter((caso) => this.filtrarCasos(caso));
-        // })
-        // .catch((error) => console.log(error));
+         })
+         .catch((error) => console.log(error));
       // } else {
       //   this.buscaCasos();
       // }

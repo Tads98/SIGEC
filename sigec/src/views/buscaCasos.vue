@@ -1,5 +1,39 @@
 <template>
   <v-card tile max-width="800" class="mx-auto mt-5" height="98%">
+    <v-overlay :value="overlay">
+      <v-card>
+        <v-row>
+          <v-card-title>Encerramento de caso</v-card-title>
+          <v-spacer></v-spacer>
+          <v-btn class="float-right white--text">
+            <v-icon>mdi-close-circle-outline</v-icon>
+          </v-btn>
+          <div>
+            <v-subheader class="text-center">
+              Você está encerramento o caso, deseja continuar?
+            </v-subheader>
+            <v-row>
+              <v-col>
+                <v-btn
+                  @click="overlay = false"
+                >
+                  <v-icon>mdi-close</v-icon>
+                  cancelar
+                </v-btn>
+              </v-col>
+              <v-col>
+                <v-btn
+                  @click="statusEncerrado"
+                >
+                  <v-icon>mdi-cancel</v-icon>
+                  Encerrar o caso
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+        </v-row>
+      </v-card>
+    </v-overlay>
     <v-toolbar class="d-none d-lg-block" extended extension-height="10">
       <v-toolbar-subtitle-2 class="shrink"
         >Pesquisar pelo nome ou CPF</v-toolbar-subtitle-2
@@ -302,7 +336,7 @@
     </v-row>
 
     <v-card
-      v-for="caso in casos"
+      v-for="(caso, v) in resultado"
       :key="caso.nome"
       max-width="90%"
       class="mx-auto mt-5 mb-5"
@@ -358,6 +392,7 @@
             </v-row>
             <v-row>
               <v-btn
+                @click="overlay = true; estado = v;"
                 class="button-2 rounded-pill mb-5 btn-lg"
                 color="red darken-1"
                 dark
@@ -386,6 +421,7 @@ export default {
   data() {
     return {
       casos: [],
+      resultado: [],
       pesquisa: "",
       filtragem: {
         aberta: false,
@@ -397,8 +433,9 @@ export default {
         status: "",
         data_abertura: "",
         data_encerramento: "",
-        estado: null,
       },
+      overlay: false,
+      estado: null,
     };
   },
 
@@ -406,19 +443,22 @@ export default {
     buscaCasos() {
       axios
         .get("/casos")
-        .then((response) => (this.casos = response.data.data))
+        .then((response) => {
+          this.casos = response.data.data;
+          this.resultado = response.data.data;
+        })
         .catch((error) => console.log(error));
     },
 
     search() {
       // if (this.pesquisa != "") {
-      axios
-        .get("/casos")
-        .then((response) => {
-          var casos = response.data.data;
-          this.casos = casos.filter((caso) => this.filtrarCasos(caso));
-        })
-        .catch((error) => console.log(error));
+      // axios
+      //   .get("/casos")
+      //   .then((response) => {
+      //     var casos = response.data.data;
+          this.resultado = this.casos.filter((caso) => this.filtrarCasos(caso));
+        // })
+        // .catch((error) => console.log(error));
       // } else {
       //   this.buscaCasos();
       // }
@@ -485,11 +525,12 @@ export default {
       }
     },
 
+
     statusEncerrado(){
       var caso = this.casos[this.estado]
       caso.status = "Encerrado";
-      // this.casos[this.estado].status = "Encerrado";
       this.$store.commit("setCaso", this.casos[this.estado]);
+      this.overlay = false;
     },
   },
 };

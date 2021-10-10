@@ -48,7 +48,6 @@
                   dense
                 ></v-text-field>
                 <v-btn
-                  to="dashboard"
                   class="rounded-pill"
                   type="submit"
                   color="indigo darken-4"
@@ -118,23 +117,26 @@ export default {
       };
 
       await axios
-        .post("/auth/login", formData)
+        .post("auth/login", formData)
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
+          this.$store.commit("authenticate");
+          this.$router.push("dashboard");
           // this.login = response.data.data;
         })
-        .catch((error) => {
-          if (error.response) {
-            for (const property in error.response.data) {
-              this.errors.push(`${property}: ${error.response.data[property]}`);
-            }
-            console.log(JSON.stringify(error.response.data));
-          } else if (error.message) {
-            console.log(JSON.stringify(error.message));
-          } else {
-            console.log(JSON.stringify(error));
-          }
-        });
+        // .catch((error) => {
+        //   if (error.response) {
+        //     for (const property in error.response.data) {
+        //       this.errors.push(`${property}: ${error.response.data[property]}`);
+        //     }
+        //     console.log(JSON.stringify(error.response.data));
+        //   } else if (error.message) {
+        //     console.log(JSON.stringify(error.message));
+        //   } else {
+        //     console.log(JSON.stringify(error));
+        //   }
+        // });
+        .catch((error) => console.log(error));
     },
   },
 };

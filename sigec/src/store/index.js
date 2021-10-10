@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
    state:{
+       isAuthenticated: false,
        vinculos:[],
     //    casos: [],
    },
@@ -14,6 +15,8 @@ export default new Vuex.Store({
     setVinculo: (state, vinculo) => (state.vinculos.push(vinculo)),   
     // setCasos: (state, casos) => (state.casos = casos),
     // setCaso: (state, caso, estado) =>(state.casos[estado] = caso),
+    authenticate: (state) => (state.isAuthenticated = true),
+    logout: (state) => (state.isAuthenticated = false),
 },
    actions:{
     async getVinculos({ commit }){
